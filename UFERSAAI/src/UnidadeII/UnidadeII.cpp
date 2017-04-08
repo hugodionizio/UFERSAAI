@@ -5,10 +5,56 @@
  *      Author: hugo
  */
 
-#include <iostream>;
-#include <cmath>;
+#include <iostream>
+#include <cmath>
+#include "UnidadeII.h"
 
 using namespace std;
+
+void ativacao(Neuronio *neuronio, int n) {
+	float x, w;
+
+	for (int j = 0; j < n; ++j) {
+		x = neuronio->dentrite[j].entrada;
+		w = neuronio->dentrite[j].peso;
+
+		neuronio->saida.ativacao[j] = x*w;
+	}
+}
+
+void propagacao(Neuronio *neuronio, int n) {
+	neuronio->saida.propagacao = 0;
+
+	for (int j = 0; j < n; ++j) {
+		neuronio->saida.propagacao += neuronio->saida.ativacao[j];
+	}
+}
+
+float processamento(Neuronio *neuronio, int n) {
+	ativacao(neuronio, n);
+	propagacao(neuronio, n);
+
+	return neuronio->saida.propagacao;
+}
+
+void setG(Perceptron *perceptron, float saidaDesejada, float saidaObtida) {
+	perceptron->g = saidaDesejada - saidaObtida;
+}
+
+void setCorrecaoEntrada(Perceptron *perceptron, int i) {
+	float c = perceptron->taxaAprendizado;
+	float g = perceptron->g;
+	float xi = perceptron->neuronio.dentrite[i].entrada;
+
+	perceptron->correcaoEntrada[i] = c * g * xi;
+}
+
+void setNovoPeso(Perceptron *perceptron, int i) {
+	float wi = perceptron->pesoAtual[i];
+	float deltai = perceptron->correcaoEntrada[i];
+
+	perceptron->novoPeso[i] = wi + deltai;
+}
 
 float backpropagation(float a, float b) {
 	float result = 0;
