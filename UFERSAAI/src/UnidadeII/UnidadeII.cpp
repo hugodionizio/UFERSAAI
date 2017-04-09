@@ -11,32 +11,6 @@
 
 using namespace std;
 
-void ativacao(Neuronio *neuronio, int n) {
-	float x, w;
-
-	for (int j = 0; j < n; ++j) {
-		x = neuronio->dentrite[j].entrada;
-		w = neuronio->dentrite[j].peso;
-
-		neuronio->saida.ativacao[j] = x*w;
-	}
-}
-
-void propagacao(Neuronio *neuronio, int n) {
-	neuronio->saida.propagacao = 0;
-
-	for (int j = 0; j < n; ++j) {
-		neuronio->saida.propagacao += neuronio->saida.ativacao[j];
-	}
-}
-
-float processamento(Neuronio *neuronio, int n) {
-	ativacao(neuronio, n);
-	propagacao(neuronio, n);
-
-	return neuronio->saida.propagacao;
-}
-
 void setG(Perceptron *perceptron, float saidaDesejada, float saidaObtida) {
 	perceptron->g = saidaDesejada - saidaObtida;
 }
@@ -60,7 +34,7 @@ float backpropagation(float a, float b) {
 	float result = 0;
 
 	float A = 0, B = 0, y, expB;
-	float i, j;
+	float i = 0, j = 0;
 	float wji, ypi, theta_j;
 	bool propagation = true;
 
@@ -87,3 +61,36 @@ float backpropagation(float a, float b) {
 	return result;
 }
 
+int exemploUnidadeII(int argc, char **argv) {
+	char atributo[3][10] = {"sol", "nublado", "chuva"};
+	RedeNeural tempo;
+	Camada *camadas;
+
+	int numNeuronios = 3;
+	Neuronio *neuronio;
+
+	inicializarRede(&tempo, CLASSIFICACAO);
+
+	camadas = tempo.camada;
+	for (int c = 0; c < tempo.quantidadeCamadas; ++c) {
+		camadas[c].quantidadeNeuronios = numNeuronios;
+		camadas[c].neuronio = new Neuronio[numNeuronios];
+	}
+
+	neuronio = camadas[0].neuronio;
+	neuronio[0].valor = 1;
+	neuronio[1].valor = 0;
+	neuronio[2].valor = 0;
+
+	neuronio = camadas[1].neuronio;
+	neuronio[0].valor = 1;
+	neuronio[1].valor = 0;
+	neuronio[2].valor = 0;
+
+	neuronio = camadas[2].neuronio;
+	neuronio[0].valor = 1;
+	neuronio[1].valor = 0;
+	neuronio[2].valor = 0;
+
+	return (0);
+}
