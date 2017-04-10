@@ -38,7 +38,6 @@ float backpropagation(float a, float b) {
 	float wji, ypi, theta_j;
 	bool propagation = true;
 
-
 	cout << "Informe o valor de A: ";
 	cin >> A;
 
@@ -46,15 +45,15 @@ float backpropagation(float a, float b) {
 	cin >> B;
 
 	wji = 1;
-	ypi = A*B;
+	ypi = A * B;
 
 	// y(pi) = 1/(1+exp(-sum(iw(ji)*y(pi)+theta(j))))
 	while (propagation) {
-		expB+=  i*wji*ypi+theta_j;
+		expB += i * wji * ypi + theta_j;
 		propagation = false;
 	}
 
-	y = 1/(1+exp((double)expB));
+	y = 1 / (1 + exp((double) expB));
 
 	cout << y << endl;
 
@@ -62,35 +61,15 @@ float backpropagation(float a, float b) {
 }
 
 int exemploUnidadeII(int argc, char **argv) {
-	char atributo[3][10] = {"sol", "nublado", "chuva"};
-	RedeNeural tempo;
-	Camada *camadas;
-
 	int numNeuronios = 3;
-	Neuronio *neuronio;
+	int numCamadas = CLASSIFICACAO;
 
-	inicializarRede(&tempo, CLASSIFICACAO);
+	float redeNeuronios[numCamadas][numNeuronios] = { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
+	char atributos[3][10] = { "sol", "nublado", "chuva" };
 
-	camadas = tempo.camada;
-	for (int c = 0; c < tempo.quantidadeCamadas; ++c) {
-		camadas[c].quantidadeNeuronios = numNeuronios;
-		camadas[c].neuronio = new Neuronio[numNeuronios];
-	}
+	RedeNeural tempo;
 
-	neuronio = camadas[0].neuronio;
-	neuronio[0].valor = 1;
-	neuronio[1].valor = 0;
-	neuronio[2].valor = 0;
-
-	neuronio = camadas[1].neuronio;
-	neuronio[0].valor = 1;
-	neuronio[1].valor = 0;
-	neuronio[2].valor = 0;
-
-	neuronio = camadas[2].neuronio;
-	neuronio[0].valor = 1;
-	neuronio[1].valor = 0;
-	neuronio[2].valor = 0;
+	inicializarRede(&tempo, numNeuronios, (float **)redeNeuronios, numCamadas, (char **)atributos);
 
 	return (0);
 }

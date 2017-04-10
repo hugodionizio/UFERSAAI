@@ -44,6 +44,6 @@ void ativacao(Neuronio *, int); // E
 void propagacao(Neuronio *, int); // T(E)
 float processamento(Neuronio *, int); // y = T(E)
 
-void inicializarNeuronio(Neuronio *);
+void inicializarNeuronio(Neuronio *, float);
 
 #endif /* UNIDADEII_NEURONIO_H_ */

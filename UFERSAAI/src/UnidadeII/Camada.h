@@ -36,10 +36,10 @@ typedef struct Camada {
 
 	int quantidadeNeuronios;
 	Neuronio *neuronio;
-	int *atributo;
+	int *tipoAtributo;
 } Camada;
 
-void inicializarCamada(Camada *);
+void inicializarCamada(Camada *, int, float *);
 
 //	Organização de Camadas
 //		Camada de entrada

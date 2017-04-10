@@ -35,7 +35,7 @@ float processamento(Neuronio *neuronio, int n) {
 }
 
 
-void inicializarNeuronio(Neuronio *neuronio) {
-
+void inicializarNeuronio(Neuronio *neuronio, float valor) {
+	neuronio->valor = valor;
 }
 

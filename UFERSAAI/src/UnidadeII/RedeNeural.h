@@ -55,7 +55,7 @@ typedef struct RedeNeural {
 	Camada *camada;
 } RedeNeural;
 
-void inicializarRede(RedeNeural *, int);
+void inicializarRede(RedeNeural *, int, float **, int, char **);
 
 //	Desempenho da Rede Neural
 typedef struct Desempenho {
