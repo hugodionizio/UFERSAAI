@@ -14,6 +14,11 @@ using namespace std;
 void inicializarRede(RedeNeural *rede, int numNeuronios, float **redeNeuronios, int problema, char **atributos) {
 	int numCamadas = CLASSIFICACAO; // Padrão
 
+	cout << "Incializando Rede Neural Artificial..." << endl;
+
+	imprimirPesosRede(redeNeuronios, numCamadas, numNeuronios, false);
+
+
 	if(problema == CLASSIFICACAO || problema == RECONHECIMENTO) {
 		rede->quantidadeCamadas = numCamadas;
 		rede->camada = new Camada[numCamadas];

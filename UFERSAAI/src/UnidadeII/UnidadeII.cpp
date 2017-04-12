@@ -13,7 +13,9 @@
 
 using namespace std;
 
-void converterEstaticaDinamica(float **estatica, float **dinamica, int lin, int col) {
+
+// Rede de pesos dos neurônios
+float **converterEstaticaDinamica(float **estatica, float **dinamica, int lin, int col) {
 	float **pAux;
 	float *pM;
 
@@ -21,10 +23,31 @@ void converterEstaticaDinamica(float **estatica, float **dinamica, int lin, int 
 	for(int i = 0; i < lin; i++) {
 		dinamica[i] = new float[col];
 		for(int j = 0; j < col; j++) {
-			pAux = (float **)&estatica[i*lin];
+			pAux = (float **)&estatica[i*lin-1];
 			pM = (float *)&pAux[j];
-			dinamica[i][j] = *(pM+1);
+			dinamica[i][j] = *(pM);
 		}
+	}
+
+	return dinamica;
+}
+
+void imprimirPesosRede(float **tabela, int lin, int col, bool pointer) {
+	float **pAux;
+	float *pM;
+
+	for(int i = 0; i < lin; i++) {
+		for(int j = 0; j < col; j++) {
+			if(pointer) {
+				cout << tabela[i][j] << " " ;
+			}
+			else {
+				pAux = (float **)&tabela[i*lin];
+				pM = (float *)&pAux[j];
+				cout << *(pM) << " ";
+			}
+		}
+		cout << endl;
 	}
 }
 
@@ -102,24 +125,14 @@ int exemploUnidadeII(int argc, char **argv) {
 	int numCamadas = CLASSIFICACAO;
 
 	float redeNeuronios[3][3] = { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
-	float **pRedeNeuronios;
-	*pRedeNeuronios = new float[numCamadas];
-	void *rn;
+	float **pRedeNeuronios, **teste;
 	char atributos[3][10] = { "sol", "nublado", "chuva" };
 
 	RedeNeural tempo;
 
 	cout << "rede de neurônios" << endl;
-	for (int n = 0; n < numCamadas; n++) {
-		pRedeNeuronios[n] = new float[numNeuronios];
-		for (int c = 0; c < numNeuronios; c++) {
-			pRedeNeuronios[n][c] = redeNeuronios[n][c];
-		}
-	}
 
-	rn = pRedeNeuronios;
-
-	inicializarRede(&tempo, numNeuronios, (float **)rn, numCamadas, (char **)atributos);
+	inicializarRede(&tempo, numNeuronios, (float **)&pRedeNeuronios+1, numCamadas, (char **)atributos);
 	imprimirRedeNeural(tempo);
 
 	return (0);

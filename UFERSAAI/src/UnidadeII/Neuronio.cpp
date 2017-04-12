@@ -39,6 +39,8 @@ float processamento(Neuronio *neuronio, int n) {
 
 
 void inicializarNeuronio(Neuronio *neuronio, float valor) {
+	cout << "Inicializando neurônios..." << endl;
+
 	neuronio->valor = valor;
 }
 

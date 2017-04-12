@@ -13,6 +13,8 @@
 using namespace std;
 
 void inicializarCamada(Camada *camada, char *atributo, int numNeuronios, float *neuronios) {
+	cout << "Inicializando camadas..." << endl;
+
 	camada->atributo = new char[strlen(atributo)];
 	strcpy(camada->atributo, atributo);
 	camada->quantidadeNeuronios = numNeuronios;

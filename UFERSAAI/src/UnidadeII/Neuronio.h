@@ -36,6 +36,11 @@ enum TipoConexaoNeuronio {
 	INIBITORIA
 };
 
+// Conversão de matrizes
+float **converterEstaticaDinamica(float **, float **, int, int);
+void imprimirPesosRede(float **, int, int, bool);
+
+
 //	Conceitos
 //		Aspectos do RNA
 //			Arquitetura

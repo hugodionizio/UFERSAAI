@@ -12,8 +12,6 @@
 #include "Camada.h"
 #include "RedeNeural.h"
 
-// Conversão de matrizes
-void converterEstaticaDinamica(float **, float **, int, int);
 
 //	Perceptron
 typedef struct Perceptron {
