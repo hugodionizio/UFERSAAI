@@ -37,9 +37,11 @@ typedef struct Camada {
 	int quantidadeNeuronios;
 	Neuronio *neuronio;
 	int *tipoAtributo;
+	char *atributo;
 } Camada;
 
-void inicializarCamada(Camada *, int, float *);
+void inicializarCamada(Camada *, char *, int, float *);
+void imprimirCamada(Camada);
 
 //	Organização de Camadas
 //		Camada de entrada
@@ -49,5 +51,6 @@ void inicializarCamada(Camada *, int, float *);
 
 // 			Conexões
 //				Tipos de conexões
+
 
 #endif /* UNIDADEII_CAMADA_H_ */

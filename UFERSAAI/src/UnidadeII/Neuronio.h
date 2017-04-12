@@ -45,5 +45,6 @@ void propagacao(Neuronio *, int); // T(E)
 float processamento(Neuronio *, int); // y = T(E)
 
 void inicializarNeuronio(Neuronio *, float);
+void imprimirNeuronio(Neuronio);
 
 #endif /* UNIDADEII_NEURONIO_H_ */

@@ -7,6 +7,9 @@
  */
 
 #include "Neuronio.h"
+#include <iostream>
+
+using namespace std;
 
 void ativacao(Neuronio *neuronio, int n) {
 	float x, w;
@@ -39,3 +42,6 @@ void inicializarNeuronio(Neuronio *neuronio, float valor) {
 	neuronio->valor = valor;
 }
 
+void imprimirNeuronio(Neuronio neuronio) {
+	cout << neuronio.valor;
+}

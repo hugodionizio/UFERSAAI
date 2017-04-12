@@ -42,8 +42,8 @@ enum FuncaoAtivacao {
 };
 
 enum TipoProblema {
-	CLASSIFICACAO,
-	RECONHECIMENTO
+	CLASSIFICACAO = 3,
+	RECONHECIMENTO = 3
 };
 
 typedef struct RedeNeural {
@@ -56,6 +56,7 @@ typedef struct RedeNeural {
 } RedeNeural;
 
 void inicializarRede(RedeNeural *, int, float **, int, char **);
+void imprimirRedeNeural(RedeNeural);
 
 //	Desempenho da Rede Neural
 typedef struct Desempenho {

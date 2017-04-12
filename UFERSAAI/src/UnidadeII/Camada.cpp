@@ -7,12 +7,27 @@
  */
 
 #include "Camada.h"
+#include <iostream>
+#include <cstring>
 
-void inicializarCamada(Camada *camada, int numNeuronios, float *neuronios) {
+using namespace std;
+
+void inicializarCamada(Camada *camada, char *atributo, int numNeuronios, float *neuronios) {
+	camada->atributo = new char[strlen(atributo)];
+	strcpy(camada->atributo, atributo);
 	camada->quantidadeNeuronios = numNeuronios;
 	camada->neuronio = new Neuronio[numNeuronios];
 
 	for (int n = 0; n < numNeuronios; ++n) {
 		inicializarNeuronio(&camada->neuronio[n], neuronios[n]);
+	}
+}
+
+void imprimirCamada(Camada camada) {
+	cout << "\n" << camada.atributo;
+
+	for (int n = 0; n < camada.quantidadeNeuronios; ++n) {
+		cout << "N=" << (n+1) << ", ";
+		imprimirNeuronio(camada.neuronio[n]);
 	}
 }

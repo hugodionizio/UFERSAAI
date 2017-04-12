@@ -13,6 +13,7 @@ using namespace std;
 
 int main(int argc, char **argv) {
 
+	exemploUnidadeII(argc, argv);
 	backpropagation(1.0, 0.0);
 
 	return (0);
