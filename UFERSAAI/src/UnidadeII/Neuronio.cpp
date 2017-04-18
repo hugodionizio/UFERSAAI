@@ -18,7 +18,7 @@ void ativacao(Neuronio *neuronio, int n) {
 		x = neuronio->dentrite[j].entrada;
 		w = neuronio->dentrite[j].peso;
 
-		neuronio->saida.ativacao[j] = x*w;
+		neuronio->saida.ativacao[j] = x * w;
 	}
 }
 
@@ -37,7 +37,6 @@ float processamento(Neuronio *neuronio, int n) {
 	return neuronio->saida.propagacao;
 }
 
-
 void inicializarNeuronio(Neuronio *neuronio, float valor) {
 	cout << "Inicializando neurônios..." << endl;
 
@@ -51,14 +50,13 @@ void imprimirPesosRede(float **tabela, int lin, int col, bool pointer) {
 	float **pAux;
 	float *pM;
 
-	for(int i = 0; i < lin; i++) {
-		for(int j = 0; j < col; j++) {
-			if(pointer) {
-				cout << tabela[i][j] << " " ;
-			}
-			else {
-				pAux = (float **)&tabela[i*lin];
-				pM = (float *)&pAux[j];
+	for (int i = 0; i < lin; i++) {
+		for (int j = 0; j < col; j++) {
+			if (pointer) {
+				cout << tabela[i][j] << " ";
+			} else {
+				pAux = (float **) &tabela[i * lin];
+				pM = (float *) &pAux[j];
 				cout << *(pM) << " ";
 			}
 		}

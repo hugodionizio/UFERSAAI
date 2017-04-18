@@ -11,10 +11,10 @@
 #include "Populacao.h"
 
 typedef struct AlgoritmosGeneticos {
-
+	Populacao populacao;
 } AlgoritmosGeneticos;
 
-void inicializarAlgoritmoGenetico(AlgoritmosGeneticos *, Populacao *);
+void inicializarAlgoritmoGenetico(AlgoritmosGeneticos *, DescritorPopulacao);
 
 void menorCaminho(int *tabela, int lin, int col);
 

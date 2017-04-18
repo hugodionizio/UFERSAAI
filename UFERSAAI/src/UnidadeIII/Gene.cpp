@@ -9,13 +9,16 @@
 #include "Gene.h"
 
 void inicializarGene(Gene *gene, DescritorPopulacao posGene) {
-	int numCaracteristica = posGene.totalCaracterisitcas,
-			*caracteristicas = posGene.caracteristicas;
+	int numCaracteristica = posGene.totalCaracterisitcas, *caracteristicas =
+			posGene.caracteristicas;
 
+	gene->numCaracteristicas = numCaracteristica;
 	gene->caracteristicas = new int[numCaracteristica];
 
-	for (int posCaracteristica = 0; posCaracteristica < numCaracteristica; ++posCaracteristica) {
-		gene->caracteristicas[posCaracteristica] = caracteristicas[posCaracteristica];
+	for (int posCaracteristica = 0; posCaracteristica < numCaracteristica;
+			++posCaracteristica) {
+		gene->caracteristicas[posCaracteristica] =
+				caracteristicas[posCaracteristica];
 	}
 
 }

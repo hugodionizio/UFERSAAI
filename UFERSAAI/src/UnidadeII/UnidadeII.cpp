@@ -12,9 +12,7 @@
 #include <cstdlib>
 #include <ctime>
 
-
 using namespace std;
-
 
 // Rede de pesos dos neurônios
 float backpropagation(float *xEntradas, int numEntradas) {
@@ -34,28 +32,26 @@ float backpropagation(float *xEntradas, int numEntradas) {
 	//	1. Inicialização dos pesos sinápticos com valores aleatórios.
 	float auxf = 0;
 	for (int var = 0; var < 2; var++) {
-			w[var] = (float)(rand() % 10)/10;
-			auxf = w[var];
-			cout << auxf << " ";
+		w[var] = (float) (rand() % 10) / 10;
+		auxf = w[var];
+		cout << auxf << " ";
 	}
 
 	//	2. Aplica o vetor de entradas X1, X2, ... Xn.
 //	for (int var = 0; var < numEntradas; ++var) {
-		x[0] = xEntradas[0];
-		x[1] = xEntradas[1];
+	x[0] = xEntradas[0];
+	x[1] = xEntradas[1];
 //	}
 
-	//	3. Calculam-se os nets dos neurônios da camada oculta, para cada j ε(1,l)
-	//	4. Aplica a função de transferência para obter as saídas ij da camada oculta.
-	//	5. Calcula os nets dos neurônios da camada de saída, para cada k ε(1,M)
-
+//	3. Calculam-se os nets dos neurônios da camada oculta, para cada j ε(1,l)
+//	4. Aplica a função de transferência para obter as saídas ij da camada oculta.
+//	5. Calcula os nets dos neurônios da camada de saída, para cada k ε(1,M)
 
 //	cout << "Informe o valor de A: ";
 //	cin >> A;
 
 //	cout << "\nInforme o valor de B: ";
 //	cin >> B;
-
 
 	ypi = 1;
 
@@ -92,7 +88,8 @@ int exemploUnidadeII(int argc, char **argv) {
 
 	cout << "rede de neurônios" << endl;
 
-	inicializarRede(&tempo, numNeuronios, (float **)&pRedeNeuronios+1, numCamadas, (char **)atributos);
+	inicializarRede(&tempo, numNeuronios, (float **) &pRedeNeuronios + 1,
+			numCamadas, (char **) atributos);
 	imprimirRedeNeural(tempo);
 
 	return (0);

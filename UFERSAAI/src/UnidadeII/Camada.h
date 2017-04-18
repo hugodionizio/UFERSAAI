@@ -21,14 +21,11 @@ enum TipoCamada {
 };
 
 enum TipoConexaoCamada {
-	COMPLETAMENTECONECTADA,
-	LOCALMENTECONECTADA,
-	PARCIALMENTECONECTADA
+	COMPLETAMENTECONECTADA, LOCALMENTECONECTADA, PARCIALMENTECONECTADA
 };
 
 enum atributoCamada {
-	CONTINUO,
-	CATEGORICO
+	CONTINUO, CATEGORICO
 };
 
 typedef struct Camada {
@@ -51,6 +48,5 @@ void imprimirCamada(Camada);
 
 // 			Conexões
 //				Tipos de conexões
-
 
 #endif /* UNIDADEII_CAMADA_H_ */

@@ -8,13 +8,15 @@
 
 #include "Cromossomo.h"
 
-void inicializarCromossomo(Cromossomo *cromossomo, DescritorPopulacao posCromossomo) {
+void inicializarCromossomo(Cromossomo *cromossomo,
+		DescritorPopulacao posCromossomo) {
 	int numGenes = posCromossomo.totalGenes;
 
-	Gene *gene = new Gene[numGenes];
+	cromossomo->numGenes = numGenes;
+	cromossomo->genes = new Gene[numGenes];
 
 	for (int posGene = 0; posGene < numGenes; ++posGene) {
-		inicializarGene(&gene[posGene], posCromossomo);
+		inicializarGene(&cromossomo->genes[posGene], posCromossomo);
 	}
 }
 

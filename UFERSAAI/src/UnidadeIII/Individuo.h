@@ -15,7 +15,7 @@ typedef struct Individuo {
 	Cromossomo *cromossomo;
 } Individuo;
 
-void inicializarIndividuo(Individuo *);
+void inicializarIndividuo(Individuo *, DescritorPopulacao);
 
 // Seleção natural de Darwin (Heurística)
 void selecionarIndividuoMaisAdaptado();

@@ -8,12 +8,16 @@
 
 #include "Individuo.h"
 
-void inicializarIndividuo(Individuo *Individuo, DescritorPopulacao posIndividuo) {
+void inicializarIndividuo(Individuo *individuo,
+		DescritorPopulacao posIndividuo) {
 	int numCromossomos = posIndividuo.totalCromossomos;
 
-	Cromossomo *cromossomo = new Cromossomo[numCromossomos];
+	individuo->numCromossomos = numCromossomos;
+	individuo->cromossomo = new Cromossomo[numCromossomos];
 
-	for (int posCromossomo = 0; posCromossomo < numCromossomos; ++posCromossomo) {
-		inicializarCromossomo(&cromossomo[posCromossomo], posIndividuo);
+	for (int posCromossomo = 0; posCromossomo < numCromossomos;
+			++posCromossomo) {
+		inicializarCromossomo(&individuo->cromossomo[posCromossomo],
+				posIndividuo);
 	}
 }

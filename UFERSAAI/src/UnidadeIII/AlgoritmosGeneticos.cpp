@@ -8,3 +8,8 @@
 
 #include "AlgoritmosGeneticos.h"
 
+void inicializarAlgoritmoGenetico(AlgoritmosGeneticos *algoritmosGeneticos, DescritorPopulacao descritor) {
+	Populacao pop;
+
+	inicializarPopulacao(&algoritmosGeneticos->populacao, descritor);
+}

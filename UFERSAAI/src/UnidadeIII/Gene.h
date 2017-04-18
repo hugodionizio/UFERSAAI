@@ -17,9 +17,9 @@ typedef struct DescritorPopulacao {
 } DescritorPopulacao;
 
 typedef struct Gene {
+	int numCaracteristicas;
 	int *caracteristicas;
-} 
-Gene;
+} Gene;
 
 void inicializarGene(Gene *, DescritorPopulacao);
 

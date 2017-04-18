@@ -11,8 +11,9 @@
 #include "Individuo.h"
 
 typedef struct Populacao {
+	int numIndividuos;
 	Individuo *individuo;
-};
+} Populacao;
 
 void inicializarPopulacao(Populacao *, DescritorPopulacao);
 

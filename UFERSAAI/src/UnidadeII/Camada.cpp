@@ -12,7 +12,8 @@
 
 using namespace std;
 
-void inicializarCamada(Camada *camada, char *atributo, int numNeuronios, float *neuronios) {
+void inicializarCamada(Camada *camada, char *atributo, int numNeuronios,
+		float *neuronios) {
 	cout << "Inicializando camadas..." << endl;
 
 	camada->atributo = new char[strlen(atributo)];
@@ -29,7 +30,7 @@ void imprimirCamada(Camada camada) {
 	cout << "\n" << camada.atributo;
 
 	for (int n = 0; n < camada.quantidadeNeuronios; ++n) {
-		cout << "N=" << (n+1) << ", ";
+		cout << "N=" << (n + 1) << ", ";
 		imprimirNeuronio(camada.neuronio[n]);
 	}
 }

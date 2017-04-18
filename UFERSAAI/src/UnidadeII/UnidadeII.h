@@ -32,9 +32,7 @@ void boltzmann(RedeNeural *);
 
 //		Paradigmas de Aprendizagem
 enum Paradigma {
-	SUPERVISIONADO,
-	NAOSUPERVISIONADO,
-	REFORCO
+	SUPERVISIONADO, NAOSUPERVISIONADO, REFORCO
 };
 
 //			Reforço
@@ -59,7 +57,6 @@ float backpropagation(float *, int);
 
 //	Considerações de Projeto
 
-
 /*
  * **************
  * * Aplicações *
@@ -74,7 +71,6 @@ float backpropagation(float *, int);
 //	Sismologia (exploração de petróleo)
 //	Robótica
 //	Aplicações Biomédicas
-
 int exemploUnidadeII(int, char **);
 
 #endif /* UNIDADEII_H_ */

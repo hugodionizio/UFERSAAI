@@ -11,21 +11,22 @@
 
 using namespace std;
 
-void inicializarRede(RedeNeural *rede, int numNeuronios, float **redeNeuronios, int problema, char **atributos) {
+void inicializarRede(RedeNeural *rede, int numNeuronios, float **redeNeuronios,
+		int problema, char **atributos) {
 	int numCamadas = CLASSIFICACAO; // Padrão
 
 	cout << "Incializando Rede Neural Artificial..." << endl;
 
 	imprimirPesosRede(redeNeuronios, numCamadas, numNeuronios, false);
 
-
-	if(problema == CLASSIFICACAO || problema == RECONHECIMENTO) {
+	if (problema == CLASSIFICACAO || problema == RECONHECIMENTO) {
 		rede->quantidadeCamadas = numCamadas;
 		rede->camada = new Camada[numCamadas];
 	}
 
 	for (int c = 0; c < rede->quantidadeCamadas; ++c) {
-		inicializarCamada(&rede->camada[c], (char *)atributos[c], numNeuronios, (float *)redeNeuronios[c]);
+		inicializarCamada(&rede->camada[c], (char *) atributos[c], numNeuronios,
+				(float *) redeNeuronios[c]);
 	}
 }
 

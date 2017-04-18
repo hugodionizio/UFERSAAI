@@ -24,6 +24,6 @@ typedef struct Perceptron {
 } Perceptron;
 
 void setCorrecaoEntrada(Perceptron *, int);
-void setG(Perceptron *, float, float); 
+void setG(Perceptron *, float, float);
 void setNovoPeso(Perceptron *, int);
 
