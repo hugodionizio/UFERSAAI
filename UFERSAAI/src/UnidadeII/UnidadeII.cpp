@@ -7,94 +7,54 @@
 
 #include <iostream>
 #include <cmath>
+#include "UnidadeII.h"
+
 #include <cstdlib>
 #include <ctime>
-#include "UnidadeII.h"
+
 
 using namespace std;
 
 
 // Rede de pesos dos neurônios
-float **converterEstaticaDinamica(float **estatica, float **dinamica, int lin, int col) {
-	float **pAux;
-	float *pM;
-
-	dinamica = new float*[lin];
-	for(int i = 0; i < lin; i++) {
-		dinamica[i] = new float[col];
-		for(int j = 0; j < col; j++) {
-			pAux = (float **)&estatica[i*lin-1];
-			pM = (float *)&pAux[j];
-			dinamica[i][j] = *(pM);
-		}
-	}
-
-	return dinamica;
-}
-
-void imprimirPesosRede(float **tabela, int lin, int col, bool pointer) {
-	float **pAux;
-	float *pM;
-
-	for(int i = 0; i < lin; i++) {
-		for(int j = 0; j < col; j++) {
-			if(pointer) {
-				cout << tabela[i][j] << " " ;
-			}
-			else {
-				pAux = (float **)&tabela[i*lin];
-				pM = (float *)&pAux[j];
-				cout << *(pM) << " ";
-			}
-		}
-		cout << endl;
-	}
-}
-
-void setG(Perceptron *perceptron, float saidaDesejada, float saidaObtida) {
-	perceptron->g = saidaDesejada - saidaObtida;
-}
-
-void setCorrecaoEntrada(Perceptron *perceptron, int i) {
-	float c = perceptron->taxaAprendizado;
-	float g = perceptron->g;
-	float xi = perceptron->neuronio.dentrite[i].entrada;
-
-	perceptron->correcaoEntrada[i] = c * g * xi;
-}
-
-void setNovoPeso(Perceptron *perceptron, int i) {
-	float wi = perceptron->pesoAtual[i];
-	float deltai = perceptron->correcaoEntrada[i];
-
-	perceptron->novoPeso[i] = wi + deltai;
-}
-
-float backpropagation(float a, float b) {
+float backpropagation(float *xEntradas, int numEntradas) {
 //	time_t t;
-	srand(time(NULL));
+//	srand(t*time(NULL));
 
 	float result = 0;
 
-	float A = 0, B = 0, y, expB;
+	float A = 0, B = 0, x[2], y, expB;
 	int i = 0, j = 0;
-	float w[3][3], ypi, theta_j;
+	float w[2], ypi, theta_j;
 	bool propagation = true;
 
-	cout << "Informe o valor de A: ";
-	cin >> A;
+	A = 0;
+	B = 0;
 
-	cout << "\nInforme o valor de B: ";
-	cin >> B;
-
+	//	1. Inicialização dos pesos sinápticos com valores aleatórios.
 	float auxf = 0;
-	for (int var = 0; var < 3; ++var) {
-		for (int n = 0; n < 3; ++n) {
-			w[var][n] = (float)(rand() % 10)/10;
-			auxf = w[var][n];
+	for (int var = 0; var < 2; var++) {
+			w[var] = (float)(rand() % 10)/10;
+			auxf = w[var];
 			cout << auxf << " ";
-		}
 	}
+
+	//	2. Aplica o vetor de entradas X1, X2, ... Xn.
+//	for (int var = 0; var < numEntradas; ++var) {
+		x[0] = xEntradas[0];
+		x[1] = xEntradas[1];
+//	}
+
+	//	3. Calculam-se os nets dos neurônios da camada oculta, para cada j ε(1,l)
+	//	4. Aplica a função de transferência para obter as saídas ij da camada oculta.
+	//	5. Calcula os nets dos neurônios da camada de saída, para cada k ε(1,M)
+
+
+//	cout << "Informe o valor de A: ";
+//	cin >> A;
+
+//	cout << "\nInforme o valor de B: ";
+//	cin >> B;
 
 
 	ypi = 1;
@@ -104,7 +64,7 @@ float backpropagation(float a, float b) {
 	j = 0;
 	while (i < 3) {
 		while (j < 3) {
-			int aux = w[i][j];
+			int aux = w[i];
 			expB += i * aux * ypi + theta_j;
 			j++;
 		}

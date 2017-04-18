@@ -12,22 +12,7 @@
 #include "Camada.h"
 #include "RedeNeural.h"
 
-
-//	Perceptron
-typedef struct Perceptron {
-	Neuronio neuronio;
-
-	float *novoPeso;
-	float *pesoAtual;
-	float *correcaoEntrada;
-	float taxaAprendizado;
-	float g; // saída desejada - saída obtida
-} Perceptron;
-
-void setG(Perceptron *, float, float); // saída desejada - saída obtida
-void setCorrecaoEntrada(Perceptron *, int);
-void setNovoPeso(Perceptron *, int);
-
+// saída desejada - saída obtida
 //	Processos de Aprendizagem
 //		Adaptação dos parâmetros livres através do ambiente
 void estimularRede(RedeNeural *);
@@ -67,7 +52,7 @@ void reforco(RedeNeural *);
 //		Não Supervisionada
 //			Redes Competitivas
 //			Redes de Kohonen - SOM
-float backpropagation(float, float);
+float backpropagation(float *, int);
 
 // 		Redes Neurais Não Supervisionadas
 //			Sistemas Tutores Inteligentes
