@@ -16,5 +16,6 @@ typedef struct Populacao {
 } Populacao;
 
 void inicializarPopulacao(Populacao *, DescritorPopulacao);
+void imprimirPopulacao(Populacao);
 
 #endif /* UNIDADEIII_POPULACAO_H_ */

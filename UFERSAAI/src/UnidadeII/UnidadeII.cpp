@@ -74,6 +74,28 @@ float backpropagation(float *xEntradas, int numEntradas) {
 	return result;
 }
 
+void exemploBackpropagation() {
+	time_t t;
+	srand(t * time(NULL));
+
+	//exemploUnidadeII(argc, argv);
+	float *entradas = new float[2] { 0.0, 0.0 };
+	backpropagation(entradas, 2);
+	delete[] entradas;
+
+	entradas = new float[2] { 0.0, 1.0 };
+	backpropagation(entradas, 2);
+	delete[] entradas;
+
+	entradas = new float[2] { 1.0, 0.0 };
+	backpropagation(entradas, 2);
+	delete[] entradas;
+
+	entradas = new float[2] { 1.0, 1.0 };
+	backpropagation(entradas, 2);
+	delete[] entradas;
+}
+
 int exemploUnidadeII(int argc, char **argv) {
 	cout << "Treinando rede..." << endl;
 

@@ -51,6 +51,7 @@ void reforco(RedeNeural *);
 //			Redes Competitivas
 //			Redes de Kohonen - SOM
 float backpropagation(float *, int);
+void exemploBackpropagation();
 
 // 		Redes Neurais Não Supervisionadas
 //			Sistemas Tutores Inteligentes

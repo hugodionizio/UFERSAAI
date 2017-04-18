@@ -6,7 +6,11 @@
  *				Hugo Dionizio Santos
  */
 
+#include <iostream>
+
 #include "Gene.h"
+
+using namespace std;
 
 void inicializarGene(Gene *gene, DescritorPopulacao posGene) {
 	int numCaracteristica = posGene.totalCaracterisitcas, *caracteristicas =
@@ -19,6 +23,17 @@ void inicializarGene(Gene *gene, DescritorPopulacao posGene) {
 			++posCaracteristica) {
 		gene->caracteristicas[posCaracteristica] =
 				caracteristicas[posCaracteristica];
+	}
+
+}
+
+void imprimirGene(Gene gene) {
+	int numCaracteristicas = gene.numCaracteristicas;
+	cout << "Número de características: " << numCaracteristicas << endl;
+
+	cout << "Características: " << endl;
+	for (int caracteristica = 0; caracteristica < numCaracteristicas; ++caracteristica) {
+		cout << gene.caracteristicas[caracteristica] << " ";
 	}
 
 }

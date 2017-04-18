@@ -14,5 +14,9 @@ int mainUnidadeIII(int argc, char **argv) {
 	dp.caracteristicas = new int;
 	*dp.caracteristicas = 1;
 
+	inicializarAlgoritmoGenetico(&ag, dp);
+
+	imprimirPopulacao(ag.populacao);
+
 	return (0);
 }

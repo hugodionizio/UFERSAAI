@@ -22,5 +22,6 @@ typedef struct Gene {
 } Gene;
 
 void inicializarGene(Gene *, DescritorPopulacao);
+void imprimirGene(Gene);
 
 #endif /* UNIDADEIII_GENE_H_ */

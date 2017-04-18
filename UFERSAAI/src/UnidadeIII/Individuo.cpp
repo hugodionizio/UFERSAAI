@@ -6,7 +6,11 @@
  *				Hugo Dionizio Santos
  */
 
+#include <iostream>
+
 #include "Individuo.h"
+
+using namespace std;
 
 void inicializarIndividuo(Individuo *individuo,
 		DescritorPopulacao posIndividuo) {
@@ -19,5 +23,15 @@ void inicializarIndividuo(Individuo *individuo,
 			++posCromossomo) {
 		inicializarCromossomo(&individuo->cromossomo[posCromossomo],
 				posIndividuo);
+	}
+}
+
+void imprimirIndividuo(Individuo individuo) {
+	int numCromossos = individuo.numCromossomos;
+
+	cout << "Número de cromossomos: " << numCromossos << endl;
+
+	for (int cromossomo = 0; cromossomo < numCromossos; ++cromossomo) {
+		imprimirCromossomo(individuo.cromossomo[cromossomo]);
 	}
 }

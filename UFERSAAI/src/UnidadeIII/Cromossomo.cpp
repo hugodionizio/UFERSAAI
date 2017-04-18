@@ -6,7 +6,11 @@
  *				Hugo Dionizio Santos
  */
 
+#include <iostream>
+
 #include "Cromossomo.h"
+
+using namespace std;
 
 void inicializarCromossomo(Cromossomo *cromossomo,
 		DescritorPopulacao posCromossomo) {
@@ -20,3 +24,11 @@ void inicializarCromossomo(Cromossomo *cromossomo,
 	}
 }
 
+void imprimirCromossomo(Cromossomo cromossomo) {
+	int numGenes = cromossomo.numGenes;
+
+	cout << "Número de genes: " << numGenes << endl;
+	for (int gene = 0; gene < numGenes; ++gene) {
+		imprimirGene(cromossomo.genes[gene]);
+	}
+}
