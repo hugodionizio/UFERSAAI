@@ -6,6 +6,8 @@
  *				Hugo Dionizio Santos
  */
 
+#include <cmath>
+
 float **converterEstaticaDinamica(float **estatica, float **dinamica, int lin,
 		int col) {
 	float **pAux;
@@ -24,3 +26,6 @@ float **converterEstaticaDinamica(float **estatica, float **dinamica, int lin,
 	return dinamica;
 }
 
+float sigmoide(float z) {
+	return 1/(1+exp(-z));
+}

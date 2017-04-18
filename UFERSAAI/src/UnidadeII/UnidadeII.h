@@ -11,6 +11,7 @@
 #include "Neuronio.h"
 #include "Camada.h"
 #include "RedeNeural.h"
+#include "FeedForward.h"
 
 // saída desejada - saída obtida
 //	Processos de Aprendizagem
@@ -50,7 +51,7 @@ void reforco(RedeNeural *);
 //		Não Supervisionada
 //			Redes Competitivas
 //			Redes de Kohonen - SOM
-float backpropagation(float *, int);
+
 void exemploBackpropagation();
 
 // 		Redes Neurais Não Supervisionadas

@@ -15,8 +15,8 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-	//exemploBackpropagation();
-	mainUnidadeIII(argc, argv);
+	exemploBackpropagation();
+	//mainUnidadeIII(argc, argv);
 
 	return (0);
 }
