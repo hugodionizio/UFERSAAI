@@ -40,11 +40,8 @@ No qual dk é o valor desejado na saida e fks’(netks) é a derivada da funçã
 transferência do neurônio k da camada de saída.
 void errosNeuroniosCamada(MLP *, float);
 
-//	9. Atualiza-se os pesos da camada de saída.
-void atualizacaoPesosCamadaSaida(MLP *);
-
-//	10. Atualiza-se os pesos da camada oculta.
-void atualizacaoPesosCamadaOculta(MLP *);
+//	(9 a 10). Atualiza-se os pesos da camada de saída.
+void atualizacaoPesosCamada(MLP *);
 
 //	11. Calcula-se o erro da rede
 void erroRede(FeedForward *);

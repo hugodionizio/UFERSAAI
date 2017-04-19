@@ -115,23 +115,19 @@ void errosNeuroniosCamada(MLP *camada, float saidaDesejada) {
 	cout << endl;
 }
 
-//	9. Atualiza-se os pesos da camada de saída.
-void atualizacaoPesosCamadaSaida(MLP *saida) {
-	cout << "9/11: Atualizando os pesos da camada de saída... " << endl;
-	int numNeuronios = saida->camada.quantidadeNeuronios;
+//	(9 a 10). Atualiza-se os pesos da camada.
+void atualizacaoPesosCamada(MLP *camada) {
+	cout << "(9 a 10)/11: Atualizando os pesos da camada... " << endl;
+	int numNeuronios = camada->camada.quantidadeNeuronios;
 
+	float auxf = 0;
 	for (int neuronio = 0; neuronio < numNeuronios; ++neuronio) {
-
-	}
-}
-
-//	10. Atualiza-se os pesos da camada oculta.
-void atualizacaoPesosCamadaOculta(MLP *oculta) {
-	cout << "10/11: Atualizando os pesos da camada oculta... " << endl;
-	int numNeuronios = oculta->camada.quantidadeNeuronios;
-
-	for (int neuronio = 0; neuronio < numNeuronios; ++neuronio) {
-
+		for (int dentrite = 0; dentrite < numNeuronios; ++dentrite) {
+			camada->perceptron[neuronio].neuronio.dentrite[dentrite].peso = (float) (rand() % 10) / 10;
+			auxf = camada->perceptron[neuronio].neuronio.dentrite[dentrite].peso;
+			cout << auxf << " ";
+		}
+		cout << endl;
 	}
 }
 
@@ -211,11 +207,11 @@ float backpropagation(float *entradas, int numEntradas, float saidaDesejada) {
 
 //	9. Atualiza-se os pesos da camada de saída.
 	cout << "9/11: Atualização dos pesos da camada de saída... " << endl;
-	atualizacaoPesosCamadaSaida(&saida);
+	atualizacaoPesosCamada(&saida);
 
 //	10. Atualiza-se os pesos da camada oculta.
 	cout << "10/11: Atualização dos pesos da camada oculta... " << endl;
-	atualizacaoPesosCamadaOculta(&oculta);
+	atualizacaoPesosCamada(&oculta);
 
 //	11. Calcula-se o erro da rede
 	cout << "11/11: Cálculo do erro da rede... " << endl;
