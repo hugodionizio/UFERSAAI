@@ -10,30 +10,31 @@
 
 #include "Neuronio.h"
 
-enum TipoCamada {
+typedef enum TipoCamada {
 	// Uma camada
 	PERCEPTRON,
 	ADALINE, // ADAptive LINear Element
 
 	// Multicamadas
-	MLP, // Multi Layer Perceptron
+	MLPERCEPTRON, // Multi Layer Perceptron
 	RBF // Radial Basis Function
-};
+} TipoCamada;
 
-enum TipoConexaoCamada {
+typedef enum TipoConexaoCamada {
 	COMPLETAMENTECONECTADA, LOCALMENTECONECTADA, PARCIALMENTECONECTADA
-};
+} TipoConexaoCamada;
 
-enum atributoCamada {
+typedef enum AtributoCamada {
 	CONTINUO, CATEGORICO
-};
+} AtributoCamada;
 
 typedef struct Camada {
-	int tipoCamada;
+	TipoCamada tipo;
+	TipoConexaoCamada tipoConexao;
 
 	int quantidadeNeuronios;
 	Neuronio *neuronio;
-	int *tipoAtributo;
+	AtributoCamada *tipoAtributo;
 	char *atributo;
 } Camada;
 

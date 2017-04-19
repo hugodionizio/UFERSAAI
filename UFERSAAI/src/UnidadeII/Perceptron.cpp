@@ -20,6 +20,10 @@ void setG(Perceptron *perceptron, float saidaDesejada, float saidaObtida) {
 	perceptron->g = saidaDesejada - saidaObtida;
 }
 
+float getG(Perceptron perceptron) {
+	return perceptron.g;
+}
+
 void setNovoPeso(Perceptron *perceptron, int i) {
 	float wi = perceptron->pesoAtual[i];
 	float deltai = perceptron->correcaoEntrada[i];

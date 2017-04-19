@@ -14,12 +14,23 @@ typedef struct Dentrite {
 } Dentrite;
 
 typedef struct Axionio {
-	float *ativacao;
+	float ativacao;
 	float propagacao;
 } Axionio;
 
 enum ModeloNeuronio {
 	MCCULLOCHPITTS
+};
+
+enum FuncaoAtivacao {
+	LINEAR, SIGMOIDE,
+
+	// Em modelo Perceptron
+	DEGRAULIMIAR,
+	DEGRAUUNITARIO,
+
+	TANGENTEHIPERBOLICA, // Aprendizado Backpropagation
+	OVERFLOWATIVACAO
 };
 
 typedef struct Neuronio {
@@ -43,9 +54,9 @@ void imprimirPesosRede(float **, int, int, bool);
 //		Aspectos do RNA
 //			Arquitetura
 //			Unidade de Processamento
-void ativacao(Neuronio *, int); // E
-void propagacao(Neuronio *, int); // T(E)
-float processamento(Neuronio *, int); // y = T(E)
+void ativacao(Neuronio *, int, float *); // E
+void propagacao(Neuronio *, FuncaoAtivacao); // T(E)
+float processamento(Neuronio *, int, float *); // y = T(E)
 
 void inicializarNeuronio(Neuronio *, float);
 void imprimirNeuronio(Neuronio);

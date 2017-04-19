@@ -24,16 +24,6 @@ enum Arquitetura {
 	UMACAMADA, COMPETITIVA, REDERECORRENTE, MULTIPLASCAMADAS, HOPFIELD
 };
 
-enum FuncaoAtivacao {
-	LINEAR, SIGMOIDE,
-
-	// Em modelo Perceptron
-	DEGRAULIMIAR,
-	DEGRAUUNITARIO,
-
-	TANGENTEHIPERBOLICA // Aprendizado Backpropagation
-};
-
 enum TipoProblema {
 	CLASSIFICACAO = 3, RECONHECIMENTO = 3
 };

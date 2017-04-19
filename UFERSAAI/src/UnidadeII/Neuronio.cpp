@@ -7,32 +7,35 @@
  */
 
 #include "Neuronio.h"
+#include "../Auxiliar.h"
+
 #include <iostream>
 
 using namespace std;
 
-void ativacao(Neuronio *neuronio, int n) {
+void ativacao(Neuronio *neuronio, int n, float *b) {
 	float x, w;
 
 	for (int j = 0; j < n; ++j) {
 		x = neuronio->dentrite[j].entrada;
 		w = neuronio->dentrite[j].peso;
 
-		neuronio->saida.ativacao[j] = x * w;
+		neuronio->saida.ativacao += x * w + b[j];
 	}
 }
 
-void propagacao(Neuronio *neuronio, int n) {
-	neuronio->saida.propagacao = 0;
+void propagacao(Neuronio *neuronio, FuncaoAtivacao funcao) {
 
-	for (int j = 0; j < n; ++j) {
-		neuronio->saida.propagacao += neuronio->saida.ativacao[j];
+	switch (funcao) {
+		case SIGMOIDE:
+			neuronio->saida.propagacao = sigmoide(neuronio->saida.ativacao);
+			break;
 	}
 }
 
-float processamento(Neuronio *neuronio, int n) {
-	ativacao(neuronio, n);
-	propagacao(neuronio, n);
+float processamento(Neuronio *neuronio, int n, float *b) {
+	ativacao(neuronio, n, b);
+	propagacao(neuronio, SIGMOIDE);
 
 	return neuronio->saida.propagacao;
 }
