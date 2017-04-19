@@ -134,6 +134,14 @@ void atualizacaoPesosCamada(MLP *camada) {
 //	11. Calcula-se o erro da rede
 void erroRede(FeedForward *ff) {
 	cout << "11/11: Calculando o erro da rede... " << endl;
+	int numNeuronios = ff->mlp.camada.quantidadeNeuronios;
+
+	ff->erro = powf(ff->mlp.perceptron[0].neuronio.saida.propagacao, 2.0);
+	for (int neuronio = 1; neuronio < numNeuronios; ++neuronio) {
+		ff->erro += powf(ff->mlp.perceptron[neuronio].neuronio.saida.propagacao, 2.0);
+	}
+	ff->erro = ff->erro/2.0;
+	cout << ff->erro << endl;
 }
 
 float backpropagation(float *entradas, int numEntradas, float saidaDesejada) {
@@ -143,7 +151,7 @@ float backpropagation(float *entradas, int numEntradas, float saidaDesejada) {
 	float result = 0;
 
 	float A = 0, B = 0, *x = new float[numEntradas], y, expB;
-	int i = 0, j = 0;
+	int i = 0, j = 0, iteracoes = 0;
 	float *w = new float[numEntradas], *b = new float[numEntradas], ypi,
 			theta_j;
 	bool propagation = true;
@@ -165,57 +173,62 @@ float backpropagation(float *entradas, int numEntradas, float saidaDesejada) {
 	incializacaoPesosSinapticos(&oculta, numEntradas);
 	incializacaoPesosSinapticos(&saida, numEntradas);
 
-	//	2. Aplica o vetor de entradas X1, X2, ... Xn.
-	cout << "2/11: Aplicação do vetor de entradas X1, X2, ... Xn ..." << endl;
-	vetorEntradas(&entrada, &oculta, entradas);
+	do {
+		//	2. Aplica o vetor de entradas X1, X2, ... Xn.
+		cout << "2/11: Aplicação do vetor de entradas X1, X2, ... Xn ..." << endl;
+		vetorEntradas(&entrada, &oculta, entradas);
 
-//	3. Calculam-se os nets dos neurônios da camada oculta, para cada j ε(1,l)
-	cout
-			<< "3/11: Cálculo dos nets dos neurônios da camada oculta, para cada j ε(1,l) ... "
-			<< endl;
-	netsNeuroniosCamadaOculta(&oculta, b);
+	//	3. Calculam-se os nets dos neurônios da camada oculta, para cada j ε(1,l)
+		cout
+				<< "3/11: Cálculo dos nets dos neurônios da camada oculta, para cada j ε(1,l) ... "
+				<< endl;
+		netsNeuroniosCamadaOculta(&oculta, b);
 
-//	4. Aplica a função de transferência para obter as saídas ij da camada oculta.
-	cout
-			<< "4/11: Aplicação da função de transferência para obter as saídas ij da camada oculta... "
-			<< endl;
-	transferenciaCamadaOculta(&oculta);
+	//	4. Aplica a função de transferência para obter as saídas ij da camada oculta.
+		cout
+				<< "4/11: Aplicação da função de transferência para obter as saídas ij da camada oculta... "
+				<< endl;
+		transferenciaCamadaOculta(&oculta);
 
-//	5. Calcula os nets dos neurônios da camada de saída, para cada k ε(1,M)
-	cout
-			<< "5/11: Cálculo dos nets dos neurônios da camada de saída, para cada k ε(1,M)... "
-			<< endl;
-	netsNeuroniosCamadaSaida(&saida, oculta);
+	//	5. Calcula os nets dos neurônios da camada de saída, para cada k ε(1,M)
+		cout
+				<< "5/11: Cálculo dos nets dos neurônios da camada de saída, para cada k ε(1,M)... "
+				<< endl;
+		netsNeuroniosCamadaSaida(&saida, oculta);
 
-//	6. Calcula as saídas Ok dos neurônios da camada de saída.
-	cout << "6/11: Cálculo das saídas Ok dos neurônios da camada de saída... "
-			<< endl;
-	saidasONeuroniosCamadaSaida(&saida);
+	//	6. Calcula as saídas Ok dos neurônios da camada de saída.
+		cout << "6/11: Cálculo das saídas Ok dos neurônios da camada de saída... "
+				<< endl;
+		saidasONeuroniosCamadaSaida(&saida);
 
-//	7. Calcula os erros para os neurônios da camada de saída \
-	No qual dk é o valor desejado na saida e fks’(netks) é a derivada da função de \
-	transferência do neurônio k da camada de saída.
-	cout << "7/11: Cálculo dos erros para os neurônios da camada de saída ... "
-			<< endl;
-	errosNeuroniosCamada(&saida, saidaDesejada);
+	//	7. Calcula os erros para os neurônios da camada de saída \
+		No qual dk é o valor desejado na saida e fks’(netks) é a derivada da função de \
+		transferência do neurônio k da camada de saída.
+		cout << "7/11: Cálculo dos erros para os neurônios da camada de saída ... "
+				<< endl;
+		errosNeuroniosCamada(&saida, saidaDesejada);
 
-//	8. Calcula-se os erros nos neurônios da camada oculta, para cada j ε(1,l)
-	cout
-			<< "8/11: Cálculo dos erros nos neurônios da camada oculta, para cada j ε(1,l) ... "
-			<< endl;
-	errosNeuroniosCamada(&oculta, saidaDesejada);
+	//	8. Calcula-se os erros nos neurônios da camada oculta, para cada j ε(1,l)
+		cout
+				<< "8/11: Cálculo dos erros nos neurônios da camada oculta, para cada j ε(1,l) ... "
+				<< endl;
+		errosNeuroniosCamada(&oculta, saidaDesejada);
 
-//	9. Atualiza-se os pesos da camada de saída.
-	cout << "9/11: Atualização dos pesos da camada de saída... " << endl;
-	atualizacaoPesosCamada(&saida);
+	//	9. Atualiza-se os pesos da camada de saída.
+		cout << "9/11: Atualização dos pesos da camada de saída... " << endl;
+		atualizacaoPesosCamada(&saida);
 
-//	10. Atualiza-se os pesos da camada oculta.
-	cout << "10/11: Atualização dos pesos da camada oculta... " << endl;
-	atualizacaoPesosCamada(&oculta);
+	//	10. Atualiza-se os pesos da camada oculta.
+		cout << "10/11: Atualização dos pesos da camada oculta... " << endl;
+		atualizacaoPesosCamada(&oculta);
 
-//	11. Calcula-se o erro da rede
-	cout << "11/11: Cálculo do erro da rede... " << endl;
-	erroRede(&ff);
+	//	11. Calcula-se o erro da rede
+		cout << "11/11: Cálculo do erro da rede... " << endl;
+		ff.mlp = saida;
+		erroRede(&ff);
+
+		iteracoes++;
+	} while (ff.erro != saidaDesejada && iteracoes < 10);
 
 //	cout << "Informe o valor de A: ";
 //	cin >> A;

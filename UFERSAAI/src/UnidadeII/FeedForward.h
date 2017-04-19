@@ -13,7 +13,8 @@
 #include "../Auxiliar.h"
 
 typedef struct FeedForward {
-	MLP ff;
+	RedeNeural descritor;
+	MLP mlp;
 	float erro;
 } FeedForward;
 
