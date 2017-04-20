@@ -111,6 +111,7 @@ void errosNeuroniosCamada(MLP *camada, float saidaDesejada) {
 	for (int neuronio = 0; neuronio < numNeuronios; ++neuronio) {
 		setG(&camada->perceptron[neuronio], saidaDesejada, camada->perceptron[neuronio].neuronio.saida.propagacao);
 		// cout << getG(camada->perceptron[neuronio]) << " ";
+		camada->perceptron[neuronio].taxaAprendizado++;
 	}
 	// cout << endl;
 }
@@ -123,7 +124,7 @@ void atualizacaoPesosCamada(MLP *camada) {
 	float auxf = 0;
 	for (int neuronio = 0; neuronio < numNeuronios; ++neuronio) {
 		for (int dentrite = 0; dentrite < numNeuronios; ++dentrite) {
-			camada->perceptron[neuronio].neuronio.dentrite[dentrite].peso = (float) (rand() % 10) / 10;
+			camada->perceptron[neuronio].neuronio.dentrite[dentrite].peso = getG(camada->perceptron[neuronio])*(float) (rand() % 10) / 10;
 			auxf = camada->perceptron[neuronio].neuronio.dentrite[dentrite].peso;
 			// cout << auxf << " ";
 		}
@@ -178,6 +179,8 @@ float backpropagation(float *entradas, int numEntradas, float saidaDesejada) {
 	incializacaoPesosSinapticos(&saida, numEntradas);
 
 	do {
+		result = oculta.perceptron->neuronio.saida.propagacao;
+
 		//	2. Aplica o vetor de entradas X1, X2, ... Xn.
 		// cout << "2/11: Aplicação do vetor de entradas X1, X2, ... Xn ..." << endl;
 		vetorEntradas(&entrada, &oculta, entradas);
@@ -231,13 +234,16 @@ float backpropagation(float *entradas, int numEntradas, float saidaDesejada) {
 		ff.mlp = saida;
 		erroRede(&ff);
 
-		iteracoes++;
-	} while (ff.erro != saidaDesejada && iteracoes < 100);
+		if(getPropagacao(oculta.perceptron[0])==getPropagacao(oculta.perceptron[1])) {
+			oculta.nivelada = true;
+		}
+		//iteracoes++;
+	} while (ff.erro != saidaDesejada && result != getPropagacao(oculta.perceptron[0]) && oculta.nivelada);
+	result = oculta.perceptron[1].neuronio.saida.propagacao;
 
-	result = oculta.perceptron->neuronio.saida.propagacao;
-	cout << result << endl;
+	cout << round(result) << "\t";
 
-	cout << "Taxa de aprendizado: " << iteracoes << endl;
+	cout << oculta.perceptron[1].taxaAprendizado << endl;
 
 	return result;
 }

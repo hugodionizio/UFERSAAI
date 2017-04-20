@@ -31,3 +31,6 @@ void setNovoPeso(Perceptron *perceptron, int i) {
 	perceptron->novoPeso[i] = wi + deltai;
 }
 
+float getPropagacao(Perceptron perceptron){
+	return perceptron.neuronio.saida.propagacao;
+}

@@ -13,6 +13,7 @@
 
 typedef struct MLP {
 	Camada camada;
+	bool nivelada;
 
 	Perceptron *perceptron;
 } MLP;

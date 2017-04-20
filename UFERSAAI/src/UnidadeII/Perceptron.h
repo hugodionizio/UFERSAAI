@@ -25,5 +25,6 @@ void setCorrecaoEntrada(Perceptron *, int);
 void setG(Perceptron *, float, float);
 float getG(Perceptron);
 void setNovoPeso(Perceptron *, int);
+float getPropagacao(Perceptron);
 
 #endif /* UNIDADEII_PERCEPTRON_H_ */

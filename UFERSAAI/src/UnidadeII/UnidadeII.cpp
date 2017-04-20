@@ -22,6 +22,7 @@ void exemploBackpropagation() {
 	//exemploUnidadeII(argc, argv);
 	float saidaDesejada = 0;
 	float *entradas = new float[numEntradas] { 0.0, 0.0 };
+	cout << "Entradas\tSaídas\tTaxa de aprendizado" << endl;
 	backpropagation(entradas, numEntradas, saidaDesejada);
 	delete[] entradas;
 
