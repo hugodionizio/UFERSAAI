@@ -13,6 +13,10 @@
 typedef struct Cromossomo {
 	int numGenes;
 	Gene *genes;
+	Gene limInferior;
+	Gene limSuperior;
+
+	Gene *restricoes;
 } Cromossomo;
 
 void inicializarCromossomo(Cromossomo *, DescritorPopulacao);

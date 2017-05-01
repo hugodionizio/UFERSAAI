@@ -5,8 +5,8 @@
  *      Authors: 
  *				Hugo Dionizio Santos
  */
-#ifndef UNIDADEII_NEURONIO_H_
-#define UNIDADEII_NEURONIO_H_
+#ifndef UNIDADEII_REDENEURAL_NEURONIO_H_
+#define UNIDADEII_REDENEURAL_NEURONIO_H_
 
 typedef struct Dentrite {
 	float entrada;
@@ -36,6 +36,7 @@ enum FuncaoAtivacao {
 typedef struct Neuronio {
 	float valor;
 
+	int numDentrites;
 	Dentrite *dentrite;
 	Axionio saida;
 
@@ -61,4 +62,4 @@ float processamento(Neuronio *, int, float *); // y = T(E)
 void inicializarNeuronio(Neuronio *, float);
 void imprimirNeuronio(Neuronio);
 
-#endif /* UNIDADEII_NEURONIO_H_ */
+#endif /* UNIDADEII_REDENEURAL_NEURONIO_H_ */

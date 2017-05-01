@@ -9,6 +9,7 @@
 #include "AlgoritmosGeneticos.h"
 
 void inicializarAlgoritmoGenetico(AlgoritmosGeneticos *algoritmosGeneticos, DescritorPopulacao descritor) {
+	Populacao *diversidade;
 	Populacao pop;
 
 	inicializarPopulacao(&algoritmosGeneticos->populacao, descritor);

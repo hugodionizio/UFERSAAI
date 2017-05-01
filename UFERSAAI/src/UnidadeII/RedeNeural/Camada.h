@@ -5,8 +5,8 @@
  *      Authors: 
  *				Hugo Dionizio Santos
  */
-#ifndef UNIDADEII_CAMADA_H_
-#define UNIDADEII_CAMADA_H_
+#ifndef UNIDADEII_REDENEURAL_CAMADA_H_
+#define UNIDADEII_REDENEURAL_CAMADA_H_
 
 #include "Neuronio.h"
 
@@ -50,4 +50,4 @@ void imprimirCamada(Camada);
 // 			Conexões
 //				Tipos de conexões
 
-#endif /* UNIDADEII_CAMADA_H_ */
+#endif /* UNIDADEII_REDENEURAL_CAMADA_H_ */

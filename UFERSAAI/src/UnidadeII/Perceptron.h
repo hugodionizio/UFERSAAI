@@ -8,7 +8,7 @@
 #ifndef UNIDADEII_PERCEPTRON_H_
 #define UNIDADEII_PERCEPTRON_H_
 
-#include "Neuronio.h"
+#include "RedeNeural/Neuronio.h"
 
 //	Perceptron
 typedef struct Perceptron {
@@ -23,8 +23,13 @@ typedef struct Perceptron {
 
 void setCorrecaoEntrada(Perceptron *, int);
 void setG(Perceptron *, float, float);
+void setGOculta(Perceptron *, Perceptron);
 float getG(Perceptron);
 void setNovoPeso(Perceptron *, int);
+float getAtivacao(Perceptron);
 float getPropagacao(Perceptron);
+
+void inicializarPesosPerceptron(Perceptron *, int);
+void atualizarPesosPerceptron(Perceptron *);
 
 #endif /* UNIDADEII_PERCEPTRON_H_ */

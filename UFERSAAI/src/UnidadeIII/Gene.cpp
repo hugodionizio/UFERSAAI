@@ -37,3 +37,7 @@ void imprimirGene(Gene gene) {
 	}
 
 }
+
+void mutacao(Gene *gene) {
+
+}

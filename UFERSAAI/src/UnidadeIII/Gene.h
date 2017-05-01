@@ -19,9 +19,13 @@ typedef struct DescritorPopulacao {
 typedef struct Gene {
 	int numCaracteristicas;
 	int *caracteristicas;
+
+	bool bit;
 } Gene;
 
 void inicializarGene(Gene *, DescritorPopulacao);
 void imprimirGene(Gene);
+
+void mutacao(Gene *);
 
 #endif /* UNIDADEIII_GENE_H_ */

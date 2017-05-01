@@ -7,7 +7,8 @@
  */
 
 #include "Neuronio.h"
-#include "../Auxiliar.h"
+
+#include "../../Auxiliar.h"
 
 #include <iostream>
 
@@ -16,18 +17,23 @@ using namespace std;
 void ativacao(Neuronio *neuronio, int n, float *b) {
 	float x, w;
 
+	cout << "3.1 Ativando valores da soma..." << endl;
 	for (int j = 0; j < n; ++j) {
 		x = neuronio->dentrite[j].entrada;
 		w = neuronio->dentrite[j].peso;
 
 		neuronio->saida.ativacao += x * w + b[j];
+		cout << neuronio->saida.ativacao << " ";
 	}
+	cout << endl;
 }
 
 void propagacao(Neuronio *neuronio, FuncaoAtivacao funcao) {
 
+	cout << "Propagando sinal da soma por ";
 	switch (funcao) {
 		case SIGMOIDE:
+			cout << "Sigmoide" << endl;
 			neuronio->saida.propagacao = sigmoide(neuronio->saida.ativacao);
 			break;
 	}

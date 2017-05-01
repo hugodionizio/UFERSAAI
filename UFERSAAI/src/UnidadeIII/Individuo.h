@@ -15,10 +15,23 @@ typedef struct Individuo {
 	Cromossomo *cromossomo;
 } Individuo;
 
+// a
 void inicializarIndividuo(Individuo *, DescritorPopulacao);
 void imprimirIndividuo(Individuo);
 
+// b
+float avaliar(Individuo *);
+
+// c
+float aptidao(Individuo *); // fitness function (gene = função: x2-12x+40
+//typedef aptidao
+
 // Seleção natural de Darwin (Heurística)
 void selecionarIndividuoMaisAdaptado();
+
+// Seleção de pais
+void selecionarPais();
+
+void convergirGenetica();
 
 #endif /* UNIDADEIII_INDIVIDUO_H_ */

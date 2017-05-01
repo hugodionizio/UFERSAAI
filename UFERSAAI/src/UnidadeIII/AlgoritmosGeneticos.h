@@ -12,10 +12,12 @@
 
 typedef struct AlgoritmosGeneticos {
 	Populacao populacao;
+	int descontinuidade;
 } AlgoritmosGeneticos;
 
 void inicializarAlgoritmoGenetico(AlgoritmosGeneticos *, DescritorPopulacao);
 
 void menorCaminho(int *tabela, int lin, int col);
+void descontinuidadeDura(AlgoritmosGeneticos *);
 
 #endif /* UNIDADEIII_ALGORITMOSGENETICOS_H_ */

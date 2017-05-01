@@ -5,8 +5,8 @@
  *      Authors: 
  *				Hugo Dionizio Santos
  */
-#ifndef UNIDADEII_REDENEURAL_H_
-#define UNIDADEII_REDENEURAL_H_
+#ifndef UNIDADEII_REDENEURAL_REDENEURAL_H_
+#define UNIDADEII_REDENEURAL_REDENEURAL_H_
 
 #include "Camada.h"
 
@@ -70,4 +70,4 @@ typedef struct Desempenho {
 //		Utilização da Rede Neural
 //		Manutenção da Rede Neural
 
-#endif /* UNIDADEII_REDENEURAL_H_ */
+#endif /* UNIDADEII_REDENEURAL_REDENEURAL_H_ */

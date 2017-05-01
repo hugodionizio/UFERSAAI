@@ -29,3 +29,7 @@ float **converterEstaticaDinamica(float **estatica, float **dinamica, int lin,
 float sigmoide(float z) {
 	return 1/(1+exp(-z));
 }
+
+float dsigmoide(float z) {
+	return exp(-z)/powf((1+exp(-z)),2.0);
+}

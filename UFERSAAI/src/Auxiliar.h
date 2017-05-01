@@ -10,5 +10,6 @@
 
 float **converterEstaticaDinamica(float **, float **, int lin, int);
 float sigmoide(float);
+float dsigmoide(float);
 
 #endif /* AUXILIAR_H_ */

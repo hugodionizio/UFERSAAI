@@ -8,10 +8,10 @@
 #ifndef UNIDADEII_H_
 #define UNIDADEII_H_
 
-#include "Neuronio.h"
-#include "Camada.h"
-#include "RedeNeural.h"
 #include "FeedForward.h"
+#include "RedeNeural/Camada.h"
+#include "RedeNeural/Neuronio.h"
+#include "RedeNeural/RedeNeural.h"
 
 // saída desejada - saída obtida
 //	Processos de Aprendizagem
@@ -53,6 +53,7 @@ void reforco(RedeNeural *);
 //			Redes de Kohonen - SOM
 
 void exemploBackpropagation();
+void backpropagationXOR();
 
 // 		Redes Neurais Não Supervisionadas
 //			Sistemas Tutores Inteligentes

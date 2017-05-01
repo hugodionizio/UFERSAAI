@@ -7,6 +7,7 @@
  */
 
 #include "RedeNeural.h"
+
 #include <iostream>
 
 using namespace std;

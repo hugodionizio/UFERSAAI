@@ -5,24 +5,22 @@
  *      Author: hugo
  */
 
-#include <iostream>
 #include "UnidadeII.h"
 
-#include <cmath>
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
 void exemploBackpropagation() {
-	time_t t;
-	srand(t * time(NULL));
+	//time_t t;
+	srand(time(NULL));
 
 	int numEntradas = 2;
-	//exemploUnidadeII(argc, argv);
 	float saidaDesejada = 0;
 	float *entradas = new float[numEntradas] { 0.0, 0.0 };
-	cout << "Entradas\tSaídas\tTaxa de aprendizado" << endl;
 	backpropagation(entradas, numEntradas, saidaDesejada);
 	delete[] entradas;
 
@@ -40,6 +38,23 @@ void exemploBackpropagation() {
 	entradas = new float[numEntradas] { 1.0, 1.0 };
 	backpropagation(entradas, numEntradas, saidaDesejada);
 	delete[] entradas;
+}
+
+void backpropagationXOR() {
+	cout << "Backpropagation para XOR" << endl;
+	float matrizConfusao[4][2] = {{0, 0}, {0, 1}, {1, 0}, {1, 1}};
+	float saidaDesejada[4] = {0, 1, 1, 0};
+	float entrada[2];
+
+	srand(time(NULL));
+
+	for (int i = 0; i < 4; ++i) {
+//		for (int j = 0; j < 2; ++j) {
+//			cout << matrizConfusao[i][j] << "\t";
+//		}
+		entrada[0] = matrizConfusao[i][0]; entrada[1] = matrizConfusao[i][1];
+		backpropagation(entrada, 2, saidaDesejada[i]);
+	}
 }
 
 int exemploUnidadeII(int argc, char **argv) {
