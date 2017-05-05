@@ -37,7 +37,7 @@ void setGOculta(Perceptron *perceptron, Perceptron saida) {
 }
 
 float getG(Perceptron perceptron) {
-	return perceptron.g;
+	return (perceptron.g);
 }
 
 void setNovoPeso(Perceptron *perceptron, int i) {
@@ -79,9 +79,9 @@ void atualizarPesosPerceptron(Perceptron *perceptron) {
 }
 
 float getAtivacao(Perceptron perceptron){
-	return perceptron.neuronio.saida.ativacao;
+	return (perceptron.neuronio.saida.ativacao);
 }
 
 float getPropagacao(Perceptron perceptron){
-	return perceptron.neuronio.saida.propagacao;
+	return (perceptron.neuronio.saida.propagacao);
 }

@@ -35,3 +35,9 @@ void imprimirIndividuo(Individuo individuo) {
 		imprimirCromossomo(individuo.cromossomo[cromossomo]);
 	}
 }
+
+float aptidao(Individuo *) {
+	// f(x,y) = abs(exp(-x), pow(-y, 2) + 1) + pow(10,-4)
+	// 0.0005
+	// [-1 a 1]
+}

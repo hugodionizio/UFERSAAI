@@ -14,11 +14,10 @@ using namespace std;
 
 //	1. Inicialização dos pesos sinápticos com valores aleatórios.
 void incializacaoPesosSinapticos(MLP *camada, int numEntradas) {
-	float result = 0;
 
 	cout << "1/11: Inicializando pesos sinápticos com valores aleatórios..."
 			<< endl;
-	float auxf = 0;
+
 	camada->camada.quantidadeNeuronios = numEntradas;
 	camada->perceptron = new Perceptron[numEntradas];
 
@@ -97,9 +96,11 @@ void saidasONeuroniosCamadaSaida(MLP *saida) {
 	cout << endl;
 }
 
-//	7. Calcula os erros para os neurônios da camada de saída \
-	No qual dk é o valor desejado na saida e fks’(netks) é a derivada da função de \
-	transferência do neurônio k da camada de saída.
+/*
+ * 7. Calcula os erros para os neurônios da camada de saída
+ *	  No qual dk é o valor desejado na saida e fks’(netks) é a derivada da função de
+ *	  transferência do neurônio k da camada de saída.
+ */
 void errosNeuroniosCamadaSaida(MLP *saida, float saidaDesejada) {
 	cout
 			<< "7/11: Calculando os erros para os neurônios da camada de saída... "

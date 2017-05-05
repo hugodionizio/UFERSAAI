@@ -23,13 +23,13 @@ float **converterEstaticaDinamica(float **estatica, float **dinamica, int lin,
 		}
 	}
 
-	return dinamica;
+	return (dinamica);
 }
 
 float sigmoide(float z) {
-	return 1/(1+exp(-z));
+	return (1/(1+exp(-z)));
 }
 
 float dsigmoide(float z) {
-	return exp(-z)/powf((1+exp(-z)),2.0);
+	return (exp(-z)/powf((1+exp(-z)),2.0));
 }

@@ -36,6 +36,16 @@ void propagacao(Neuronio *neuronio, FuncaoAtivacao funcao) {
 			cout << "Sigmoide" << endl;
 			neuronio->saida.propagacao = sigmoide(neuronio->saida.ativacao);
 			break;
+		case DEGRAULIMIAR:
+			break;
+		case DEGRAUUNITARIO:
+			break;
+		case LINEAR:
+			break;
+		case OVERFLOWATIVACAO:
+			break;
+		case TANGENTEHIPERBOLICA:
+			break;
 	}
 }
 
@@ -43,7 +53,7 @@ float processamento(Neuronio *neuronio, int n, float *b) {
 	ativacao(neuronio, n, b);
 	propagacao(neuronio, SIGMOIDE);
 
-	return neuronio->saida.propagacao;
+	return (neuronio->saida.propagacao);
 }
 
 void inicializarNeuronio(Neuronio *neuronio, float valor) {

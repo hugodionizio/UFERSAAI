@@ -36,9 +36,11 @@ void netsNeuroniosCamadaSaida(MLP *, MLP);
 //	6. Calcula as saídas Ok dos neurônios da camada de saída.
 void saidasONeuroniosCamadaSaida(MLP *);
 
-//	7. Calcula os erros para os neurônios da camada \
-No qual dk é o valor desejado na saida e fks’(netks) é a derivada da função de \
-transferência do neurônio k da camada de saída.
+/*
+ * 7. Calcula os erros para os neurônios da camada de saída
+ *	  No qual dk é o valor desejado na saida e fks’(netks) é a derivada da função de
+ *	  transferência do neurônio k da camada de saída.
+ */
 void errosNeuroniosCamadaSaida(MLP *, float);
 
 //	8. Calcula-se os erros nos neurônios da camada oculta, para cada j ε(1,l)
