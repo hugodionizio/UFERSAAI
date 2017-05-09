@@ -9,9 +9,14 @@
 #define SRC_UNIDADEIII_AGENTESINTELIGENTES_AMBIENTE_H_
 
 typedef struct Ambiente {
+	float desempenho;
+	int *ambiente;
+	int *sensores;
+	int *atuadores;
 
 } Ambiente;
 
 void inicializarAmbiente(Ambiente *);
+void coletarInformacoes(Ambiente *);
 
 #endif /* SRC_UNIDADEIII_AGENTESINTELIGENTES_AMBIENTE_H_ */
