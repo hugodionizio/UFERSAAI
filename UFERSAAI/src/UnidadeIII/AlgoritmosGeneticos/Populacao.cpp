@@ -39,7 +39,6 @@ float calcularProbabilidade(Populacao populacao, Individuo individuo, int potenc
 }
 
 void selecionarPais(Populacao *populacao) {
-	Individuo aux;
 	float tmpMaior, tmpSegundoMaior, atual;
 
 	populacao->listaOrdenada = new Individuo[2];
@@ -51,15 +50,10 @@ void selecionarPais(Populacao *populacao) {
 		tmpSegundoMaior = minimizarProbabilidade(*populacao, (Individuo)populacao->listaOrdenada[1]);
 		atual = minimizarProbabilidade(*populacao, (Individuo)populacao->individuo[i]);
 		if (tmpMaior < atual) {
-			aux = populacao->individuo[i];
-			populacao->individuo[i] = populacao->listaOrdenada[0];
-			populacao->individuo[1] = aux;
-		}
-		tmpMaior = minimizarProbabilidade(*populacao, (Individuo)populacao->listaOrdenada[0]);
-		if (tmpMaior < tmpSegundoMaior) {
-			aux = populacao->listaOrdenada[1];
-			populacao->individuo[i] = populacao->listaOrdenada[0];
-			populacao->individuo[1] = aux;
+			populacao->listaOrdenada[1] = populacao->listaOrdenada[0];
+			populacao->listaOrdenada[0] = populacao->individuo[i];
+		} else if (tmpSegundoMaior < atual && atual < tmpMaior) {
+			populacao->listaOrdenada[1] = populacao->individuo[i];
 		}
 	}
 }
@@ -77,4 +71,10 @@ void imprimirPopulacao(Populacao pop) {
 		cout << endl;
 	}
 	cout << endl;
+}
+
+void imprimirMelhoresPais(Populacao pop) {
+	cout << "Melhores pais:" << endl;
+	cout << 100*minimizarProbabilidade(pop, pop.listaOrdenada[0]) << "%" << endl;
+	cout << 100*minimizarProbabilidade(pop, pop.listaOrdenada[1]) << "%" << endl;
 }

@@ -25,5 +25,8 @@ int mainUnidadeIII(int argc, char **argv) {
 
 	imprimirPopulacao(ag.populacao);
 
+	selecionarPais(&ag.populacao);
+	imprimirMelhoresPais(ag.populacao);
+
 	return (0);
 }

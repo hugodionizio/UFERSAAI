@@ -48,5 +48,6 @@ void convergirGenetica();
  * */
 
 void imprimirPopulacao(Populacao);
+void imprimirMelhoresPais(Populacao);
 
 #endif /* UNIDADEIII_POPULACAO_H_ */
