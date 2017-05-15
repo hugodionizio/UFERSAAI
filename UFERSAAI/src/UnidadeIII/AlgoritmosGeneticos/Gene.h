@@ -31,8 +31,9 @@ typedef struct Gene {
 	bool bit;
 } Gene;
 
-void inicializarGene(Gene *, DescritorPopulacao);
+void inicializarGene(Gene *, DescritorPopulacao, int);
 int getNumCaracteristicas(Gene);
+int getCaracteristica(Gene, int);
 void imprimirGene(Gene);
 
 void mutacao(Gene *);

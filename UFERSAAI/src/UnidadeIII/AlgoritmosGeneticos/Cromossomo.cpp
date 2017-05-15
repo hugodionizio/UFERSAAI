@@ -7,6 +7,9 @@
  */
 
 #include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 #include "Cromossomo.h"
 
@@ -15,23 +18,46 @@ using namespace std;
 void inicializarCromossomo(Cromossomo *cromossomo,
 		DescritorPopulacao posCromossomo) {
 	int numGenes = posCromossomo.totalGenes;
+	float base, minimo;
+	int potencia = 1, divisoes;
 
+	// Descritor do cromossomo
 	cromossomo->numGenes = numGenes;
-	cromossomo->genes = new Gene[numGenes];
-
 	cromossomo->limInferior = posCromossomo.limites[0];
 	cromossomo->limSuperior = posCromossomo.limites[1];
 	cromossomo->restricoes = new float;
 	*cromossomo->restricoes = posCromossomo.restrtricao;
 
+	// Atribuição de valor aleatório
+	base = cromossomo->limSuperior*10/(2*cromossomo->restricoes[0]);
+	potencia = (int)log10(base);
+	cromossomo->valor = cromossomo->limInferior+(rand()%(int)(2*base))/pow(10,potencia);
+
+	// Converter flutuante para binário (menor que 1)
+	// 1 - Cálculo da mantissa
+	cromossomo->genes = new Gene[numGenes];
+	minimo = cromossomo->valor;
 	for (int posGene = 0; posGene < numGenes; ++posGene) {
-		inicializarGene(&cromossomo->genes[posGene], posCromossomo);
+		if (posGene == 0) {
+			if (minimo >= 0)
+				inicializarGene(&cromossomo->genes[posGene], posCromossomo, 0);
+			else
+				inicializarGene(&cromossomo->genes[posGene], posCromossomo, 1);
+		}
+		else {
+			inicializarGene(&cromossomo->genes[posGene], posCromossomo, (int)abs(minimo));
+		}
+		if (abs(minimo) > 1)
+			minimo = (abs(minimo) - 1)*2;
+		else
+			minimo = abs(minimo)*2;
 	}
 }
 
 void imprimirCromossomo(Cromossomo cromossomo) {
 	int numGenes = cromossomo.numGenes;
 
+	cout << cromossomo.valor << "\t";
 	cout << "[" << cromossomo.limInferior << ", "
 			<< cromossomo.limSuperior << "] " << "e = "
 			<< cromossomo.restricoes[0] << endl;
