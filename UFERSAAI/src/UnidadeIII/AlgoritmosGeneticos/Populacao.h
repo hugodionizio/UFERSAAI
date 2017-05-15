@@ -16,6 +16,7 @@ typedef struct Populacao {
 } Populacao;
 
 void inicializarPopulacao(Populacao *, DescritorPopulacao);
+float calcularProbabilidade(Populacao, Individuo, int);
 void imprimirPopulacao(Populacao);
 
 #endif /* UNIDADEIII_POPULACAO_H_ */

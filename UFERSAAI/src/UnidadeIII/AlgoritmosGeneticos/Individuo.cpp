@@ -7,6 +7,7 @@
  */
 
 #include <iostream>
+#include <cmath>
 
 #include "Individuo.h"
 
@@ -29,18 +30,22 @@ void inicializarIndividuo(Individuo *individuo,
 void imprimirIndividuo(Individuo individuo) {
 	int numCromossos = individuo.numCromossomos;
 
-	cout << "|Número de cromossomos: " << numCromossos << endl;
+	//cout << "|Número de cromossomos: " << numCromossos << endl;
 
 	for (int cromossomo = 0; cromossomo < numCromossos; ++cromossomo) {
-		cout << "|Cromossomo " << (cromossomo+1) << endl;
+		cout << "C" << (cromossomo+1) << " = ";
 		imprimirCromossomo(individuo.cromossomo[cromossomo]);
 	}
+	cout << aptidao(individuo) << "\t";
 }
 
-float aptidao(Individuo *) {
-	// f(x,y) = abs(exp(-x), pow(-y, 2) + 1) + pow(10,-4)
-	// 0.0005
-	// [-1 a 1]
+float aptidao(Individuo individuo) {
+	float x, y;
+	x = getCromossomoValor(individuo.cromossomo[0]);
+	y = getCromossomoValor(individuo.cromossomo[1]);
 
-	return (0);
+	// [-1 a 1] // 0.0005
+	// f(x,y) = abs(exp(-x) - pow(y, 2) + 1) + pow(10,-4)
+
+	return (abs(exp(-x) - pow(y, 2) + 1) + pow(10,-4));
 }

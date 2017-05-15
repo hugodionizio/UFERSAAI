@@ -53,17 +53,21 @@ int getCaracteristica(Gene gene, int posCaracteristica) {
 void imprimirGene(Gene gene) {
 	int numCaracteristicas = gene.numCaracteristicas;
 
+	/*
 	if (numCaracteristicas > 1) {
 		cout << "|||Número de características: " << numCaracteristicas << endl;
 
 		cout << "|||Características: " << endl << "|||";
 	}
+	 * */
 	for (int caracteristica = 0; caracteristica < numCaracteristicas; ++caracteristica) {
-		cout << gene.caracteristicas[caracteristica] << " ";
+		cout << gene.caracteristicas[caracteristica];
 	}
+	/*
 	if (numCaracteristicas > 1) {
 		cout << endl;
 	}
+	 * */
 }
 
 void mutacao(Gene *gene) {

@@ -21,6 +21,7 @@ typedef struct Cromossomo {
 } Cromossomo;
 
 void inicializarCromossomo(Cromossomo *, DescritorPopulacao);
+float getCromossomoValor(Cromossomo);
 void imprimirCromossomo(Cromossomo);
 
 #endif /* UNIDADEIII_CROMOSSOMO_H_ */

@@ -22,7 +22,7 @@ void imprimirIndividuo(Individuo);
 // b) Avaliar cada cromossomo na população
 float avaliar(Individuo *);
 
-float aptidao(Individuo *); // fitness function (gene = função: x2-12x+40
+float aptidao(Individuo); // fitness function (gene = função: x2-12x+40
 //typedef aptidao
 
 // Seleção natural de Darwin (Heurística)

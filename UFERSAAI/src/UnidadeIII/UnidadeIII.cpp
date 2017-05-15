@@ -16,7 +16,7 @@ using namespace std;
 
 int mainUnidadeIII(int argc, char **argv) {
 	AlgoritmosGeneticos ag;
-	DescritorPopulacao dp{2, 2, 17, 1, nullptr, {-1, 1}, 0.0005};
+	DescritorPopulacao dp{4, 2, 17, 1, nullptr, {-1, 1}, 0.0005};
 
 	dp.caracteristicas = new int;
 	*dp.caracteristicas = 1;

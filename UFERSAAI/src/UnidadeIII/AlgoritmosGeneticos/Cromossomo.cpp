@@ -19,7 +19,7 @@ void inicializarCromossomo(Cromossomo *cromossomo,
 		DescritorPopulacao posCromossomo) {
 	int numGenes = posCromossomo.totalGenes;
 	float base, minimo;
-	int potencia = 1, divisoes;
+	int potencia = 1;
 
 	// Descritor do cromossomo
 	cromossomo->numGenes = numGenes;
@@ -33,7 +33,7 @@ void inicializarCromossomo(Cromossomo *cromossomo,
 	potencia = (int)log10(base);
 	cromossomo->valor = cromossomo->limInferior+(rand()%(int)(2*base))/pow(10,potencia);
 
-	// Converter flutuante para binário (menor que 1)
+	// Converter flutuante para binário (menor que 1) e guardar nos genes
 	// 1 - Cálculo da mantissa
 	cromossomo->genes = new Gene[numGenes];
 	minimo = cromossomo->valor;
@@ -54,23 +54,33 @@ void inicializarCromossomo(Cromossomo *cromossomo,
 	}
 }
 
+float getCromossomoValor(Cromossomo cromossomo) {
+
+	return (cromossomo.valor);
+}
+
 void imprimirCromossomo(Cromossomo cromossomo) {
 	int numGenes = cromossomo.numGenes;
 
 	cout << cromossomo.valor << "\t";
+
+	/*
 	cout << "[" << cromossomo.limInferior << ", "
 			<< cromossomo.limSuperior << "] " << "e = "
 			<< cromossomo.restricoes[0] << endl;
 
 	cout << "||Número de genes: " << numGenes << endl;
+	 * */
 
 	for (int gene = 0; gene < numGenes; ++gene) {
+		/*
 		if (getNumCaracteristicas(cromossomo.genes[gene]) > 1) {
 			cout << "||Gene " << (gene+1) << endl;
 		}
 		else if (gene == 0)
 			cout << "|||";
+		 * */
 		imprimirGene(cromossomo.genes[gene]);
 	}
-	cout << endl;
+	cout << "\t";
 }
