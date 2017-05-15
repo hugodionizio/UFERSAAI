@@ -16,6 +16,7 @@ typedef struct AlgoritmosGeneticos {
 } AlgoritmosGeneticos;
 
 void inicializarAlgoritmoGenetico(AlgoritmosGeneticos *, DescritorPopulacao);
+int mainAlgoritmosGeneticos(int, char **);
 
 void menorCaminho(int *tabela, int lin, int col);
 void descontinuidadeDura(AlgoritmosGeneticos *);

@@ -70,6 +70,9 @@ void imprimirGene(Gene gene) {
 	 * */
 }
 
-void mutacao(Gene *gene) {
+int mutacao(Gene *gene) {
+	int original = gene->caracteristicas[0];
+	gene->caracteristicas[0] = rand()%2;
 
+	return (abs(gene->caracteristicas[0] - original));
 }

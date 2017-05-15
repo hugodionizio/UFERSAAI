@@ -18,6 +18,8 @@ using namespace std;
 int main(int argc, char **argv) {
 
 	cout << "UFERSA AI - Inteligência Artificial UFERSA" << endl;
+	cout << "Dr. Sc. Professor Danniel Lopes" << endl;
+	cout << "Discente Hugo Dionizio Santos" << endl;
 
 	//backpropagationXOR();
 	mainUnidadeIII(argc, argv);

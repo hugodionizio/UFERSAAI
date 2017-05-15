@@ -36,6 +36,6 @@ int getNumCaracteristicas(Gene);
 int getCaracteristica(Gene, int);
 void imprimirGene(Gene);
 
-void mutacao(Gene *);
+int mutacao(Gene *);
 
 #endif /* UNIDADEIII_GENE_H_ */

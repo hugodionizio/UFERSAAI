@@ -12,8 +12,11 @@
 
 typedef struct Populacao {
 	int numIndividuos;
+	int ultimoIndividuo;
+
 	Individuo *individuo;
 	Individuo *listaOrdenada;
+	Individuo novoIndividuo;
 
 } Populacao;
 
@@ -30,22 +33,25 @@ void selecionarPais(Populacao *);
  * d) Aplicar os operadores de recombinação e mutação a estes pais
  *    de forma a gerar os indivíduos da nova geração
  * */
-void convergirGenetica();
+void convergirGenetica(Populacao *);
 
 /*
  * e) Apagar membros mais velhos da população
  *
  * */
+void liberarGeracao(Populacao *);
 
 /*
- * f) Avaliar todos os novos cromossomos e inserir-los na população
+ * f) Avaliar todos os novos indivíduos e inserir-los na população
  *
  * */
+void avaliarNovosIndividuos(Populacao *);
 
 /*
  * g) Se o tempo acabou ou o melhor cromossomo satisfaz os requerimentos
  * 	  e desempenho, retorna-o. Caso contrário, volta para o passo c)
  * */
+bool tempoMelhorIndividuo(Populacao, int);
 
 void imprimirPopulacao(Populacao);
 void imprimirMelhoresPais(Populacao);
