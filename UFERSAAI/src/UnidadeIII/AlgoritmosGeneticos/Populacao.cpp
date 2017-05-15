@@ -38,6 +38,32 @@ float calcularProbabilidade(Populacao populacao, Individuo individuo, int potenc
 	return (pow(aptidao(individuo), potencia)/soma);
 }
 
+void selecionarPais(Populacao *populacao) {
+	Individuo aux;
+	float tmpMaior, tmpSegundoMaior, atual;
+
+	populacao->listaOrdenada = new Individuo[2];
+
+	populacao->listaOrdenada[0] = populacao->individuo[0];
+	populacao->listaOrdenada[1] = populacao->individuo[1];
+	for (int i = 0; i < populacao->numIndividuos; ++i) {
+		tmpMaior = minimizarProbabilidade(*populacao, (Individuo)populacao->listaOrdenada[0]);
+		tmpSegundoMaior = minimizarProbabilidade(*populacao, (Individuo)populacao->listaOrdenada[1]);
+		atual = minimizarProbabilidade(*populacao, (Individuo)populacao->individuo[i]);
+		if (tmpMaior < atual) {
+			aux = populacao->individuo[i];
+			populacao->individuo[i] = populacao->listaOrdenada[0];
+			populacao->individuo[1] = aux;
+		}
+		tmpMaior = minimizarProbabilidade(*populacao, (Individuo)populacao->listaOrdenada[0]);
+		if (tmpMaior < tmpSegundoMaior) {
+			aux = populacao->listaOrdenada[1];
+			populacao->individuo[i] = populacao->listaOrdenada[0];
+			populacao->individuo[1] = aux;
+		}
+	}
+}
+
 void imprimirPopulacao(Populacao pop) {
 	int numIndividuos = pop.numIndividuos;
 	//cout << "Número de indivíduos: " << numIndividuos << endl;

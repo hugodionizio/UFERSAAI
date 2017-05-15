@@ -25,31 +25,4 @@ float avaliar(Individuo *);
 float aptidao(Individuo); // fitness function (gene = função: x2-12x+40
 //typedef aptidao
 
-// Seleção natural de Darwin (Heurística)
-void selecionarIndividuoMaisAdaptado();
-
-// c) Selecionar os pais para gerar novos cromosssomos
-void selecionarPais();
-
-/*
- * d) Aplicar os operadores de recombinação e mutação a estes pais
- *    de forma a gerar os indivíduos da nova geração
- * */
-void convergirGenetica();
-
-/*
- * e) Apagar membros mais velhos da população
- *
- * */
-
-/*
- * f) Avaliar todos os novos cromossomos e inserir-los na população
- *
- * */
-
-/*
- * g) Se o tempo acabou ou o melhor cromossomo satisfaz os requerimentos
- * 	  e desempenho, retorna-o. Caso contrário, volta para o passo c)
- * */
-
 #endif /* UNIDADEIII_INDIVIDUO_H_ */
