@@ -5,6 +5,8 @@
  *      Authors: 
  *				Hugo Dionizio Santos
  */
+#include <cstdlib>
+#include <ctime>
 
 #include "AlgoritmosGeneticos.h"
 
@@ -12,5 +14,6 @@ void inicializarAlgoritmoGenetico(AlgoritmosGeneticos *algoritmosGeneticos, Desc
 	Populacao *diversidade;
 	Populacao pop;
 
+	srand(time(NULL));
 	inicializarPopulacao(&algoritmosGeneticos->populacao, descritor);
 }

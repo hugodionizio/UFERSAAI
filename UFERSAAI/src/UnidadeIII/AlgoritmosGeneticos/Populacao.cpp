@@ -28,6 +28,8 @@ void imprimirPopulacao(Populacao pop) {
 	cout << "Número de indivíduos: " << numIndividuos << endl;
 
 	for (int posIndividuo = 0; posIndividuo < numIndividuos; ++posIndividuo) {
+		cout << "Indivíduo " << (posIndividuo+1) << endl;
 		imprimirIndividuo(pop.individuo[posIndividuo]);
 	}
+	cout << endl;
 }

@@ -7,6 +7,8 @@
  */
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 #include "Gene.h"
 
@@ -21,21 +23,30 @@ void inicializarGene(Gene *gene, DescritorPopulacao posGene) {
 
 	for (int posCaracteristica = 0; posCaracteristica < numCaracteristica;
 			++posCaracteristica) {
-		gene->caracteristicas[posCaracteristica] =
-				caracteristicas[posCaracteristica];
+		gene->caracteristicas[posCaracteristica] = rand()%2;
+				//caracteristicas[posCaracteristica];
 	}
 
 }
 
+int getNumCaracteristicas(Gene gene) {
+	return (gene.numCaracteristicas);
+}
+
 void imprimirGene(Gene gene) {
 	int numCaracteristicas = gene.numCaracteristicas;
-	cout << "Número de características: " << numCaracteristicas << endl;
 
-	cout << "Características: " << endl;
+	if (numCaracteristicas > 1) {
+		cout << "|||Número de características: " << numCaracteristicas << endl;
+
+		cout << "|||Características: " << endl << "|||";
+	}
 	for (int caracteristica = 0; caracteristica < numCaracteristicas; ++caracteristica) {
 		cout << gene.caracteristicas[caracteristica] << " ";
 	}
-
+	if (numCaracteristicas > 1) {
+		cout << endl;
+	}
 }
 
 void mutacao(Gene *gene) {

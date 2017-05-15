@@ -9,7 +9,7 @@
 #define UNIDADEIII_H_
 
 // Algoritmos Genéticos
-#include "AlgoritmosGeneticos.h"
+#include "AlgoritmosGeneticos/AlgoritmosGeneticos.h"
 
 int mainUnidadeIII(int, char **);
 

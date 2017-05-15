@@ -5,8 +5,8 @@
  *      Author: hugo
  */
 
-#include "UnidadeI/UnidadeI.h"
-#include "UnidadeII/UnidadeII.h"
+//#include "UnidadeI/UnidadeI.h"
+//#include "UnidadeII/UnidadeII.h"
 #include "UnidadeIII/UnidadeIII.h"
 
 #include <iostream>
@@ -19,7 +19,8 @@ int main(int argc, char **argv) {
 
 	cout << "UFERSA AI - Inteligência Artificial UFERSA" << endl;
 
-	backpropagationXOR();
+	//backpropagationXOR();
+	mainUnidadeIII(argc, argv);
 
 	return (0);
 }
